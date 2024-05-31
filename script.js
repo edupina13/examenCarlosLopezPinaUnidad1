@@ -112,7 +112,7 @@ const createPost = async (userId) => {
       }),
     });
     const newPost = await response.json();
-    console.log('Post creado:', newPost);
+    console.log('Post creado con async:', newPost);
     return newPost;
   } catch (error) {
     console.error('Error creando el post:', error);
@@ -164,6 +164,7 @@ const deletePost = (postId) => {
   })
     .then(() => {
         setTimeout(() => {
+            console.log(postId)
             console.log('Post eliminado exitosamente con then');
           }, '5000');
    
@@ -287,13 +288,11 @@ const getUsers2 = () => {
       }),
     })
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Error al crear el post');
-        }
+        
         return response.json();
       })
       .then((newPost) => {
-        console.log('Post creado:', newPost);
+        console.log('Post creado con then:', newPost);
         return newPost;
       })
       .catch((error) => {
@@ -346,8 +345,10 @@ const deletePost2 = async (postId) => {
       });
   
       setTimeout(() => {
+        
         console.log('Post eliminado exitosamente con  async await');
       }, '6000');
+      
 
     } catch (error) {
       console.error('Error eliminando el post:', error);
